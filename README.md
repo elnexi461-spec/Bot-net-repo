@@ -8,11 +8,3 @@ Architectural Features
 * Session Persistence: Utilizes cookie and local storage serialization to bypass repeated login screens, OTP triggers, and security walls.
 * Humanized Pacing (Jitter): Replaces static script loops with mathematical variance (`random.uniform`) to mimic organic user hesitation and reading speeds.
 * Execution Staggering: Prevents artificial velocity spikes by distributing account execution windows across extended intervals.
-
-INSTALL DEPENDENCIES 
-pip install -r requirements.txt
-
-
-BASH
-python main.py
-
