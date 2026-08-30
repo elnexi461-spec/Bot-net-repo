@@ -1,0 +1,14 @@
+{
+  "accounts": [
+    {
+      "username": "Reddit_Operator_01",
+      "proxy": "socks5://user:pass@residential_proxy_1:port",
+      "session_file": "session_Reddit_Operator_01.json"
+    },
+    {
+      "username": "Reddit_Operator_02",
+      "proxy": "socks5://user:pass@residential_proxy_2:port",
+      "session_file": "session_Reddit_Operator_02.json"
+    }
+  ]
+}
