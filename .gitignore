@@ -1,0 +1,5 @@
+# Ignore local session state cookies and caches
+*.json
+__pycache__/
+.env
+venv/
