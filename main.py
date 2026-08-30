@@ -1,39 +1,35 @@
-import json
 import random
 import time
+from account_manager import AccountInstance
+import json
+
+# Load fleet configuration from config.json
+with open("config.json", "r") as f:
+  config_data = json.load(f)
+
+ACCOUNT_FLEET = config_data.get("accounts", [])
 
 
-class RedditAutomationBot:
+def run_fleet_automation():
+  print("=== Starting Multi-Account Reddit Automation Fleet ===")
 
-  def __init__(self, username, proxy_url, session_file):
-    self.username = username
-    self.proxy_url = proxy_url
-    self.session_file = session_file
+  for config in ACCOUNT_FLEET:
+    bot = AccountInstance(config)
+    bot.initialize_instance()
 
-  def load_session_state(self):
-    """Loads existing session cookies to avoid repeated logins and triggers."""
-    try:
-      with open(self.session_file, 'r') as f:
-        print(f'[{self.username}] Loaded existing cookies successfully.')
-        return json.load(f)
-    except FileNotFoundError:
-      print(f'[{self.username}] No session file found. Fresh login required.')
-      return None
-
-  def human_jitter(self, min_seconds=30, max_seconds=90):
-    """Introduces randomized delays to mimic human reading and reaction time."""
-    wait_time = random.uniform(min_seconds, max_seconds)
+    # Execution Staggering: Prevent artificial velocity spikes across accounts
+    stagger_delay = random.randint(180, 300)
     print(
-        f'[{self.username}] Pausing for {wait_time:.2f} seconds (Jitter'
-        ' active)...'
+        f"[System] Staggering next account activation by {stagger_delay}"
+        f" seconds...\n"
     )
-    time.sleep(wait_time)
+    time.sleep(stagger_delay)
 
-  def simulate_organic_browsing(self):
-    """Simulates scrolling and passive feed viewing before executing actions."""
-    print(
-        f'[{self.username}] Simulating organic feed scrolling via proxy:'
-        f' {self.proxy_url}'
+  print("=== Fleet Automation Run Completed Successfully ===")
+
+
+if __name__ == "__main__":
+  run_fleet_automation()
     )
     self.human_jitter(15, 45)
 
